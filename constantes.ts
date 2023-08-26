@@ -1,1 +1,1 @@
-export const TANK_LOAD = 'TANK_LOAD';
+export const FETCH_TANKS = 'FETCH_TANKS';

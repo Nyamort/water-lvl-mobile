@@ -35,3 +35,6 @@ yarn-error.*
 *.tsbuildinfo
 
 docker-compose.override.yaml
+
+.idea
+.vscode

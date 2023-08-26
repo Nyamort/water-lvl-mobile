@@ -1,13 +1,13 @@
-import {TANK_LOAD} from "../../constantes";
+import {FETCH_TANKS} from "../../constantes";
+import {Tank} from "../../models/Tank";
 const initialState = {
-    tanks: [],
+    tanks: [] as Tank[],
 }
 
 export default  function tankReducer (state = initialState, action) {
     switch (action.type) {
-        case TANK_LOAD:
-            state.tanks.push(action.payload)
-            return {...state};
+        case FETCH_TANKS:
+            return {...state, tanks: action.payload};
         default:
             return state;
     }

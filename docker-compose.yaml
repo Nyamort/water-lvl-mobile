@@ -14,7 +14,7 @@ services:
       - NODE_ENV=development
       - RCT_METRO_PORT=19001
       - EXPO_DEVTOOLS_LISTEN_ADDRESS=0.0.0.0
-      - REACT_NATIVE_PACKAGER_HOSTNAME=host.docker.internal
+      - REACT_NATIVE_PACKAGER_HOSTNAME=<your ip address>
     volumes:
       - ./:/app:delegated
     healthcheck:

@@ -1,13 +1,13 @@
-import {StyleSheet} from 'react-native';
+import {SafeAreaView, StyleSheet} from 'react-native';
 import BottomNavigation from "./navigation/BottomNavigation";
-import {SafeAreaProvider} from "react-native-safe-area-context";
 import store from "./redux/store";
+import {Provider} from "react-redux";
 
 export default function App() {
     return (
-        <SafeAreaProvider store={store}>
+        <Provider store={store}>
             <BottomNavigation></BottomNavigation>
-        </SafeAreaProvider>
+        </Provider>
 
     );
 }
