@@ -2,17 +2,38 @@ import {TouchableHighlight, View} from "react-native";
 import {StyleSheet} from "react-native";
 import {Tank} from "../models/Tank";
 import {Text} from "react-native";
+import {MaterialCommunityIcons} from "@expo/vector-icons";
+import { useNavigation } from '@react-navigation/native';
 
 export interface TankItemProps {
     tank: Tank
 }
 
 export function TankItem(props: TankItemProps) {
+    const navigation = useNavigation();
+
+    const getPercentColor = () => {
+        if (props.tank.latestMeasure < 20) {
+            return '#ff0000';
+        } else if (props.tank.latestMeasure < 50) {
+            return '#ffbf00';
+        } else {
+            return '#00ff00';
+        }
+    }
+
+    const goToTankDetail = () => {
+        navigation.navigate('tankDetail', {tank: props.tank});
+    }
+
     return (
-        <TouchableHighlight style={styles.container} underlayColor="#C9C9C9FF" onPress={()=>console.log(props.tank)}>
+        <TouchableHighlight style={styles.container} underlayColor="#C9C9C9FF" onPress={()=>goToTankDetail()}>
             <View style={styles.textContainer}>
-                <Text style={styles.text}>{props.tank.name}</Text>
-                <Text style={styles.percent}>{props.tank.latestMeasure} %</Text>
+                <View style={styles.label}>
+                    <MaterialCommunityIcons name="propane-tank-outline" size={24} color="black" />
+                    <Text style={styles.text}>{props.tank.name}</Text>
+                </View>
+                <Text style={[styles.percent, {color: getPercentColor()}]}>{props.tank.latestMeasure} %</Text>
             </View>
         </TouchableHighlight>
     );
@@ -36,5 +57,8 @@ const styles = StyleSheet.create({
     textContainer: {
         flexDirection: 'row',
         justifyContent: 'space-between',
+    },
+    label: {
+        flexDirection: 'row',
     }
 });
