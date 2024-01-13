@@ -1,4 +1,4 @@
-import {FlatList, RefreshControl, ScrollView, StyleSheet, Text, View} from "react-native";
+import {FlatList, RefreshControl, StyleSheet} from "react-native";
 import {useDispatch, useSelector} from 'react-redux';
 import {useCallback, useEffect, useState} from "react";
 import {getTankList} from "../redux/actions/tankActions";

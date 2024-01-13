@@ -2,11 +2,8 @@ interface Config {
     [key: string]: string | undefined;
 }
 
-const env: Config = new Proxy(
-    {},
-    {
-        get: (_, key: string) => process.env["EXPO_PUBLIC_"+key],
-    }
-);
+const env: Config = {
+    API_URL: 'https://water-lvl-backend.vercel.app',
+}
 
 export default env;

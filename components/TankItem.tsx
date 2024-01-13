@@ -13,9 +13,9 @@ export function TankItem(props: TankItemProps) {
     const navigation = useNavigation();
 
     const getPercentColor = () => {
-        if (props.tank.latestMeasure < 20) {
+        if (props.tank.percentFilled < 20) {
             return '#ff0000';
-        } else if (props.tank.latestMeasure < 50) {
+        } else if (props.tank.percentFilled < 50) {
             return '#ffbf00';
         } else {
             return '#00ff00';
@@ -33,7 +33,7 @@ export function TankItem(props: TankItemProps) {
                     <MaterialCommunityIcons name="propane-tank-outline" size={24} color="black" />
                     <Text style={styles.text}>{props.tank.name}</Text>
                 </View>
-                <Text style={[styles.percent, {color: getPercentColor()}]}>{props.tank.latestMeasure} %</Text>
+                <Text style={[styles.percent, {color: getPercentColor()}]}>{props.tank.percentFilled} %</Text>
             </View>
         </TouchableHighlight>
     );

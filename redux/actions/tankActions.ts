@@ -15,7 +15,7 @@ export const getTankList = () => {
         try {
             const tankPromise = await fetch(tankUrl);
             const tankListJson = await tankPromise.json();
-            const tankList: Tank[] = tankListJson.map(elt => new Tank(elt["_id"],elt["name"], elt["dimensions"], elt["ioT"], elt["latestMeasure"]));
+            const tankList: Tank[] = tankListJson.map(elt => new Tank(elt["_id"],elt["name"], elt["dimensions"], elt["ioT"], elt["percentFilled"] ?? 0));
             dispatch(setTankList(tankList));
         } catch (error) {
             console.log('Error---------', error);
